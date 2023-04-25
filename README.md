@@ -121,9 +121,9 @@ Normalize our dataset.
 
 
 ```
-/*REG  : 212221243002
+REG  : 212221243002
 NAME : SANJAY S
-*/
+
 
 import pandas as pd
 import numpy as np
