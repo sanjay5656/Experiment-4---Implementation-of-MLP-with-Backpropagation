@@ -119,10 +119,12 @@ Normalize our dataset.
 
 ## PROGRAM
 
-REG  : 212221243002
-NAME : SANJAY S
 
 ```
+/*REG  : 212221243002
+NAME : SANJAY S
+*/
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
