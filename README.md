@@ -117,8 +117,59 @@ Normalize our dataset.
 
 8. Finally, call the functions confusion_matrix(), and the classification_report() in order to evaluate the performance of our classifier.
 
-## PROGRAM 
+## PROGRAM
+/*
+REG  : 212221243002
+NAME : SANJAY S
+*/
+```
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+data=pd.read_csv("/content/IRIS (1).csv")
+data.head()
 
+name=["sepal_length","sepal_width","petal_length","petal_width"]
+x=data.iloc[:,0:4]
+y=data.select_dtypes(include=[object])
+x.head()
+y.head()
+
+from sklearn import preprocessing
+label_encoder=preprocessing.LabelEncoder()
+data['species']=label_encoder.fit_transform(data['species'])
+data['species'].unique()
+
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.20)
+from sklearn.preprocessing import StandardScaler
+scaler=StandardScaler()
+scaler.fit(x_train)
+x_train=scaler.transform(x_train)
+x_test=scaler.transform(x_test)
+
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.neural_network import MLPClassifier
+mlp=MLPClassifier(hidden_layer_sizes=(10,10,10),max_iter=1000)
+mlp.fit(x_train,y_train.values.ravel())
+predictions=mlp.predict(x_test)
+print(predictions)
+
+print(confusion_matrix(y_test,predictions))
+print(classification_report(y_test,predictions))
+```
 ## OUTPUT 
 
+![image](https://user-images.githubusercontent.com/115128955/234188108-73d4e4fe-bad6-4493-b88b-3b889a3fc46c.png)
+
+![image](https://user-images.githubusercontent.com/115128955/234188118-564e0adf-538f-4c14-8317-ecf10edbfb64.png)
+
+![image](https://user-images.githubusercontent.com/115128955/234188154-1c71c998-0979-48fd-8589-8b255a0c51f3.png)
+
+![image](https://user-images.githubusercontent.com/115128955/234188168-abff816c-c9a3-453a-b81a-801d73444c9f.png)
+
+![image](https://user-images.githubusercontent.com/115128955/234188196-45f6f3a7-7e4a-49c0-9c73-deab964a39df.png)
+
 ## RESULT
+
+Thus Implementation-of-MLP-with-Backpropagation problem is executed successfully.
